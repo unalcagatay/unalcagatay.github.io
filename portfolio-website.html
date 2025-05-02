@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ünal Çağatay - Mechanical Engineer</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #1e3a8a;
+            --secondary-color: #3b82f6;
+            --accent-color: #60a5fa;
+            --light-bg: #f8fafc;
+            --dark-bg: #1e293b;
+            --text-color: #334155;
+            --light-text: #f8fafc;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            color: var(--text-color);
+            background-color: var(--light-bg);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: var(--light-text);
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo h1 {
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+        }
+
+        .logo p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            color: var(--light-text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            font-size: 0.95rem;
+        }
+
+        nav ul li a:hover {
+            color: var(--accent-color);
+        }
+
+        .language-toggle {
+            display: flex;
+            align-items: center;
+            margin-left: 20px;
+        }
+
+        .language-toggle a {
+            color: var(--light-text);
+            text-decoration: none;
+            padding: 5px 8px;
+            border-radius: 4px;
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
+
+        .language-toggle a.active {
+            background-color: var(--accent-color);
+        }
+
+        .language-toggle a:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .hero {
+            background: linear-gradient(rgba(30, 58, 138, 0.8), rgba(30, 58, 138, 0.9)), url('/api/placeholder/1200/600') center/cover no-repeat;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--light-text);
+            padding-top: 70px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: var(--light-text);
+            padding: 12px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: var(--primary-color);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 70px;
+            height: 3px;
+            background-color: var(--accent-color);
+        }
+
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .about-img {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .about-img img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+
+        .about-text {
+            flex: 2;
+            min-width: 300px;
+        }
+
+        .about-text h3 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .about-text p {
+            margin-bottom: 15px;
+        }
+
+        .education-item, .experience-item {
+            background-color: white;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .education-item:hover, .experience-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .timeline-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            align-items: flex-start;
+        }
+
+        .timeline-header h3 {
+            color: var(--primary-color);
+            font-size: 1.3rem;
+            margin-bottom: 5px;
+        }
+
+        .timeline-header .date {
+            background-color: var(--accent-color);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-img {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .project-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .project-card:hover .project-img img {
+            transform: scale(1.05);
+        }
+
+        .project-content {
+            padding: 20px;
+        }
+
+        .project-content h3 {
+            color: var(--primary-color);
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+
+        .project-content p {
+            margin-bottom: 15px;
+        }
+
+        .project-details {
+            margin-top: 15px;
+        }
+
+        .project-details h4 {
+            color: var(--secondary-color);
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+
+        .project-details ul {
+            padding-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .contact-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-icon {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            margin-bottom: 15px;
+        }
+
+        .contact-card h3 {
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .contact-card p, .contact-card a {
+            color: var(--text-color);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .contact-card a:hover {
+            color: var(--accent-color);
+        }
+
+        footer {
+            background-color: var(--dark-bg);
+            color: var(--light-text);
+            padding: 30px 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            margin-bottom: 20px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            margin: 0 10px;
+            color: var(--light-text);
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .logo {
+                margin-bottom: 15px;
+                text-align: center;
+            }
+
+            nav ul {
+                justify-content: center;
+                margin-top: 15px;
+            }
+
+            nav ul li {
+                margin: 0 10px;
+                margin-bottom: 10px;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .about-content {
+                flex-direction: column;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline-header {
+                flex-direction: column;
+            }
+
+            .timeline-header .date {
+                margin-top: 10px;
+            }
+        }
+
+        /* Hidden class for language toggle */
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <h1>Ünal Çağatay</h1>
+                <p class="en">Mechanical Engineering Student | Renewable Energy | Mechatronics</p>
+                <p class="tr hidden">Makine Mühendisliği Öğrencisi | Yenilenebilir Enerji | Mekatronik</p>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home" class="en">Home</a><a href="#home" class="tr hidden">Ana Sayfa</a></li>
+                    <li><a href="#about" class="en">About</a><a href="#about" class="tr hidden">Hakkımda</a></li>
+                    <li><a href="#education" class="en">Education</a><a href="#education" class="tr hidden">Eğitim</a></li>
+                    <li><a href="#experience" class="en">Experience</a><a href="#experience" class="tr hidden">Deneyim</a></li>
+                    <li><a href="#projects" class="en">Projects</a><a href="#projects" class="tr hidden">Projeler</a></li>
+                    <li><a href="#contact" class="en">Contact</a><a href="#contact" class="tr hidden">İletişim</a></li>
+                    <li class="language-toggle">
+                        <a href="#" id="en-toggle" class="active">EN</a> | 
+                        <a href="#" id="tr-toggle">TR</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="container hero-content">
+            <h1 class="en">Mechanical Engineering Student</h1>
+            <h1 class="tr hidden">Makine Mühendisliği Öğrencisi</h1>
+            <p class="en">Passionate about renewable energy, sustainability, and innovative engineering solutions</p>
+            <p class="tr hidden">Yenilenebilir enerji, sürdürülebilirlik ve yenilikçi mühendislik çözümlerine tutkulu</p>
+            <a href="#projects" class="btn en">View My Projects</a>
+            <a href="#projects" class="btn tr hidden">Projelerimi Görüntüle</a>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2 class="en">About Me</h2>
+                <h2 class="tr hidden">Hakkımda</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-img">
+                    <img src="/api/placeholder/600/600" alt="Ünal Çağatay">
+                </div>
+                <div class="about-text">
+                    <h3 class="en">Hello, I'm Ünal</h3>
+                    <h3 class="tr hidden">Merhaba, Ben Ünal</h3>
+                    <p class="en">I am a dedicated mechanical engineering student at Yaşar University, studying on a 100% scholarship. My interests include HVAC systems, energy efficiency, and sustainability. I am experienced with tools like Autodesk Fusion360, MATLAB, and SAP applications.</p>
+                    <p class="tr hidden">Yaşar Üniversitesi'nde %100 burslu olarak makine mühendisliği okuyorum. İlgi alanlarım arasında HVAC sistemleri, enerji verimliliği ve sürdürülebilirlik bulunmaktadır. Autodesk Fusion360, MATLAB ve SAP uygulamaları gibi araçlarda deneyimliyim.</p>
+                    <p class="en">I thrive in collaborative environments and aim to contribute meaningfully to engineering challenges in the field. My goal is to specialize in renewable energy systems and develop innovative solutions that can help address the global energy crisis while minimizing environmental impact.</p>
+                    <p class="tr hidden">İşbirlikçi ortamlarda başarılı olurum ve alandaki mühendislik zorluklarına anlamlı katkılar sağlamayı hedefliyorum. Amacım, yenilenebilir enerji sistemlerinde uzmanlaşmak ve çevresel etkiyi en aza indirirken küresel enerji krizinin çözümüne yardımcı olabilecek yenilikçi çözümler geliştirmektir.</p>
+                    <a href="#contact" class="btn en">Get In Touch</a>
+                    <a href="#contact" class="btn tr hidden">İletişime Geç</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="education" style="background-color: #f1f5f9;">
+        <div class="container">
+            <div class="section-title">
+                <h2 class="en">Education</h2>
+                <h2 class="tr hidden">Eğitim</h2>
+            </div>
+            <div class="education-item">
+                <div class="timeline-header">
+                    <div>
+                        <h3 class="en">Yaşar University</h3>
+                        <h3 class="tr hidden">Yaşar Üniversitesi</h3>
+                        <p class="en">Bachelor of Science in Mechanical Engineering</p>
+                        <p class="tr hidden">Makine Mühendisliği Lisans</p>
+                    </div>
+                    <div class="date">2020–Present</div>
+                </div>
+                <p class="en">Studying on a 100% scholarship with focus on renewable energy systems and mechatronics.</p>
+                <p class="tr hidden">%100 burslu olarak yenilenebilir enerji sistemleri ve mekatronik odaklı eğitim.</p>
+            </div>
+            <div class="education-item">
+                <div class="timeline-header">
+                    <div>
+                        <h3>TED Ege College</h3>
+                        <p class="en">Anatolian High School</p>
+                        <p class="tr hidden">Anadolu Lisesi</p>
+                    </div>
+                    <div class="date">2016–2020</div>
+                </div>
+                <p class="en">Graduated with strong foundation in mathematics and physics.</p>
+                <p class="tr hidden">Matematik ve fizik alanlarında güçlü bir temel ile mezun oldum.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience">
+        <div class="container">
+            <div class="section-title">
+                <h2 class="en">Professional Experience</h2>
+                <h2 class="tr hidden">Profesyonel Deneyim</h2>
+            </div>
+            <div class="experience-item">
+                <div class="timeline-header">
+                    <div>
+                        <h3>BOSCH Home Comfort Group – Manisa</h3>
+                        <p class="en">Summer Intern</p>
+                        <p class="tr hidden">Yaz Stajyeri</p>
+                    </div>
+                    <div class="date">July–September 2024</div>
+                </div>
+                <div class="en">
+                    <p>During my internship at BOSCH's Manisa facility, I worked with the Facility Management & Maintenance team, focusing on HVAC systems and energy monitoring.</p>
+                    <ul>
+                        <li>Assisted with Facility Management & Maintenance operations</li>
+                        <li>Participated in EnPG (Energy Performance Group) Monitoring activities</li>
+                        <li>Gained experience with SAP Applications for maintenance management</li>
+                        <li>Contributed to HVAC Applications and Automations projects</li>
+                    </ul>
+                </div>
+                <div class="tr hidden">
+                    <p>BOSCH'un Manisa tesisindeki stajım sırasında, Tesis Yönetimi ve Bakım ekibiyle çalıştım, HVAC sistemleri ve enerji izleme üzerine odaklandım.</p>
+                    <ul>
+                        <li>Tesis Yönetimi ve Bakım operasyonlarına yardımcı oldum</li>
+                        <li>EnPG (Enerji Performans Grubu) İzleme faaliyetlerine katıldım</li>
+                        <li>Bakım yönetimi için SAP Uygulamaları konusunda deneyim kazandım</li>
+                        <li>HVAC Uygulamaları ve Otomasyon projelerine katkıda bulundum</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="experience-item">
+                <div class="timeline-header">
+                    <div>
+                        <h3>Gümüşok Mühendislik – Aydın</h3>
+                        <p class="en">Summer Intern</p>
+                        <p class="tr hidden">Yaz Stajyeri</p>
+                    </div>
+                    <div class="date">July–September 2022</div>
+                </div>
+                <div class="en">
+                    <p>Completed a summer internship at Gümüşok Mühendislik, where I gained practical experience in mechanical engineering applications and project management.</p>
+                </div>
+                <div class="tr hidden">
+                    <p>Gümüşok Mühendislik'te yaz stajını tamamladım ve makine mühendisliği uygulamaları ve proje yönetimi konularında pratik deneyim kazandım.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" style="background-color: #f1f5f9;">
+        <div class="container">
+            <div class="section-title">
+                <h2 class="en">Projects</h2>
+                <h2 class="tr hidden">Projeler</h2>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="/api/placeholder/600/400" alt="Vertical Axis Wind Turbine">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="en">Vertical Axis Wind Turbine (VAWT)</h3>
+                        <h3 class="tr hidden">Dikey Eksenli Rüzgâr Türbini</h3>
+                        <div class="en">
+                            <p>Designed a compact vertical-axis wind turbine to improve renewable energy generation in limited spaces.</p>
+                            <div class="project-details">
+                                <h4>Goal</h4>
+                                <p>Creating an efficient, space-saving wind turbine for urban environments.</p>
+                                
+                                <h4>Technologies</h4>
+                                <ul>
+                                    <li>Fusion360 for 3D modeling and simulation</li>
+                                    <li>3D Printing for prototype parts</li>
+                                    <li>Fiberglass for blade construction</li>
+                                    <li>MATLAB for performance analysis</li>
+                                </ul>
+                                
+                                <h4>My Contribution</h4>
+                                <p>Led the design process, created prototypes, and conducted performance testing.</p>
+                                
+                                <h4>Outcome</h4>
+                                <p>A 60 cm prototype was built and successfully tested, demonstrating good performance in varying wind conditions.</p>
+                                
+                                <h4>Lessons Learned</h4>
+                                <p>Gained insights into aerodynamic efficiency, manufacturing techniques, and real-world field testing.</p>
+                            </div>
+                        </div>
+                        <div class="tr hidden">
+                            <p>Sınırlı alanlarda yenilenebilir enerji üretimini iyileştirmek için kompakt bir dikey eksenli rüzgâr türbini tasarladım.</p>
+                            <div class="project-details">
+                                <h4>Amaç</h4>
+                                <p>Kentsel ortamlar için verimli, az yer kaplayan bir rüzgâr türbini oluşturmak.</p>
+                                
+                                <h4>Teknolojiler</h4>
+                                <ul>
+                                    <li>3D modelleme ve simülasyon için Fusion360</li>
+                                    <li>Prototip parçalar için 3D Baskı</li>
+                                    <li>Kanat yapımı için Fiberglas</li>
+                                    <li>Performans analizi için MATLAB</li>
+                                </ul>
+                                
+                                <h4>Katkım</h4>
+                                <p>Tasarım sürecini yönettim, prototipler oluşturdum ve performans testleri gerçekleştirdim.</p>
+                                
+                                <h4>Sonuç</h4>
+                                <p>60 cm'lik bir prototip inşa edildi ve başarıyla test edildi, değişen rüzgâr koşullarında iyi performans gösterdi.</p>
+                                
+                                <h4>Öğrenilen Dersler</h4>
+                                <p>Aerodinamik verimlilik, üretim teknikleri ve gerçek dünya saha testi konularında içgörü kazandım.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="/api/placeholder/600/400" alt="Solar Tracking System">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="en">Solar Tracking Mechatronics Project</h3>
+                        <h3 class="tr hidden">Güneş Takip Mekatronik Projesi</h3>
+                        <div class="en">
+                            <p>Developed an automatic solar tracking system to enhance solar panel efficiency throughout the day.</p>
+                            <div class="project-details">
+                                <h4>Goal</h4>
+                                <p>Maximizing solar energy capture by continuously aligning solar panels with the sun's position.</p>
+                                
+                                <h4>Technologies</h4>
+                                <ul>
+                                    <li>Arduino microcontroller</li>
+                                    <li>Servo Motors for dual-axis movement</li>
+                                    <li>LDR Sensors for light detection</li>
+                                    <li>C/C++ programming</li>
+                                </ul>
+                                
+                                <h4>My Contribution</h4>
+                                <p>Designed the electronic circuit, wrote the control algorithm, and integrated the mechanical components.</p>
+                                
+                                <h4>Outcome</h4>
+                                <p>A functional dual-axis prototype that successfully tracked the sun throughout the day, increasing energy capture by approximately 30% compared to fixed panels.</p>
+                                
+                                <h4>Lessons Learned</h4>
+                                <p>Gained experience in embedded systems programming, control logic development, and system integration.</p>
+                            </div>
+                        </div>
+                        <div class="tr hidden">
+                            <p>Gün boyunca güneş paneli verimliliğini artırmak için otomatik bir güneş takip sistemi geliştirdim.</p>
+                            <div class="project-details">
+                                <h4>Amaç</h4>
+                                <p>Güneş panellerini sürekli olarak güneşin konumuyla hizalayarak güneş enerjisi yakalamayı maksimize etmek.</p>
+                                
+                                <h4>Teknolojiler</h4>
+                                <ul>
+                                    <li>Arduino mikrodenetleyici</li>
+                                    <li>Çift eksenli hareket için Servo Motorlar</li>
+                                    <li>Işık tespiti için LDR Sensörler</li>
+                                    <li>C/C++ programlama</li>
+                                </ul>
+                                
+                                <h4>Katkım</h4>
+                                <p>Elektronik devre tasarımı, kontrol algoritması yazımı ve mekanik bileşenlerin entegrasyonu.</p>
+                                
+                                <h4>Sonuç</h4>
+                                <p>Gün boyunca güneşi başarıyla takip eden, sabit panellere kıyasla enerji yakalamayı yaklaşık %30 artıran işlevsel bir çift eksenli prototip.</p>
+                                
+                                <h4>Öğrenilen Dersler</h4>
+                                <p>Gömülü sistem programlama, kontrol mantığı geliştirme ve sistem entegrasyonu konularında deneyim kazandım.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="/api/placeholder/600/400" alt="Hybrid Energy System">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="en">Hybrid Campus Energy System with Hydrogen Storage</h3>
+                        <h3 class="tr hidden">Hidrojen Depolamalı Hibrit Kampüs Enerji Sistemi</h3>
+                        <div class="en">
+                            <p>Designed a comprehensive hybrid energy system for university campus using solar, wind, and hydrogen storage.</p>
+                            <div class="project-details">
+                                <h4>Goal</h4>
+                                <p>Creating a sustainable energy solution that could meet the majority of a university campus's energy needs.</p>
+                                
+                                <h4>Technologies</h4>
+                                <ul>
+                                    <li>PVsyst for solar system modeling</li>
+                                    <li>MATLAB for system integration calculation</li>
+                                    <li>ANSYS for thermal and fluid analysis</li>
+                                </ul>
+                                
+                                <h4>My Contribution</h4>
+                                <p>Led the system integration design, conducted energy analysis, and developed the hydrogen storage planning.</p>
+                                
+                                <h4>Outcome</h4>
+                                <p>The theoretical model demonstrated that the system could meet 85% of the campus's annual energy needs while significantly reducing carbon emissions.</p>
+                                
+                                <h4>Lessons Learned</h4>
+                                <p>Deepened understanding of sustainability strategies, energy optimization, and the challenges of integrating multiple renewable sources.</p>
+                            </div>
+                        </div>
+                        <div class="tr hidden">
+                            <p>Güneş, rüzgar ve hidrojen depolama kullanan üniversite kampüsü için kapsamlı bir hibrit enerji sistemi tasarladım.</p>
+                            <div class="project-details">
+                                <h4>Amaç</h4>
+                                <p>Bir üniversite kampüsünün enerji ihtiyaçlarının çoğunu karşılayabilecek sürdürülebilir bir enerji çözümü oluşturmak.</p>
+                                
+                                <h4>Teknolojiler</h4>
+                                <ul>
+                                    <li>Güneş sistemi modellemesi için PVsyst</li>
+                                    <li>Sistem entegrasyonu hesaplaması için MATLAB</li>
+                                    <li>Termal ve akışkan analizi için ANSYS</li>
+                                </ul>
+                                
+                                <h4>Katkım</h4>
+                                <p>Sistem entegrasyonu tasarımını yönettim, enerji analizi yaptım ve hidrojen depolama planlamasını geliştirdim.</p>
+                                
+                                <h4>Sonuç</h4>
+                                <p>Teorik model, sistemin kampüsün yıllık enerji ihtiyaçlarının %85'ini karşılayabileceğini ve aynı zamanda karbon emisyonlarını önemli ölçüde azaltabileceğini gösterdi.</p>
+                                
+                                <h4>Öğrenilen Dersler</h4>
+                                <p>Sürdürülebilirlik stratejileri, enerji optimizasyonu ve birden fazla yenilenebilir kaynağı entegre etme zorlukları konusundaki anlayışımı derinleştirdim.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2 class="en">Contact</h2>
+                <h2 class="tr hidden">İletişim</h2>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3 class="en">Email</h3>
+                    <h3 class="tr hidden">E-posta</h3>
+                    <p><a href="mailto:unal.cagatay1903@gmail.com">unal.cagatay1903@gmail.com</a></p>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <h3 class="en">Phone</h3>
+                    <h3 class="tr hidden">Telefon</h3>
+                    <p><a href="tel:+905363551424">+90 536 355 14 24</a></p>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3 class="en">Location</h3>
+                    <h3 class="tr hidden">Konum</h3>
+                    <p>Bornova, İzmir, Turkey</p>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fab fa-linkedin"></i>
+                    </div>
+                    <h3>LinkedIn</h3>
+                    <p><a href="https://www.linkedin.com/in/ünal-çağatay-9682581b9" target="_blank" class="en">Visit Profile</a><a href="https://www.linkedin.com/in/ünal-çağatay-9682581b9" target="_blank" class="tr hidden">Profili Ziyaret Et</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <h3>Ünal Çağatay</h3>
+                <p class="en">Mechanical Engineering Student</p>
+                <p class="tr hidden">Makine Mühendisliği Öğrencisi</p>
+            </div>
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/ünal-çağatay-9682581b9" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+            <div class="footer-bottom">
+                <p class="en">© 2025 Ünal Çağatay. All rights reserved.</p>
+                <p class="tr hidden">© 2025 Ünal Çağatay. Tüm hakları saklıdır.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Language toggle functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const enToggle = document.getElementById('en-toggle');
+            const trToggle = document.getElementById('tr-toggle');
+            const enElements = document.querySelectorAll('.en');
+            const trElements = document.querySelectorAll('.tr');
+            
+            enToggle.addEventListener('click', function(e) {
+                e.preventDefault();
+                enToggle.classList.add('active');
+                trToggle.classList.remove('active');
+                
+                enElements.forEach(el => el.classList.remove('hidden'));
+                trElements.forEach(el => el.classList.add('hidden'));
+            });
+            
+            trToggle.addEventListener('click', function(e) {
+                e.preventDefault();
+                trToggle.classList.add('active');
+                enToggle.classList.remove('active');
+                
+                trElements.forEach(el => el.classList.remove('hidden'));
+                enElements.forEach(el => el.classList.add('hidden'));
+            });
+            
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    if (this.getAttribute('id') === 'en-toggle' || this.getAttribute('id') === 'tr-toggle') {
+                        return; // Skip for language toggle links
+                    }
+                    
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Add shadow to header on scroll
+            window.addEventListener('scroll', function() {
+                const header = document.querySelector('header');
+                if (window.scrollY > 50) {
+                    header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+                } else {
+                    header.style.boxShadow = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
